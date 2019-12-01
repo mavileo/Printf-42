@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/11/30 22:38:21 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/01 17:03:22 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 int		check_convers(char c)
 {
-	char	list[] = "cspdiuxX";
+	char	*list;
 	int		i;
+	int		res;
 
+	list = ft_strdup("cspdiuxX");
 	i = 0;
+	res = 0;
 	while (list[i])
 		if (c == list[i++])
-			return (1);
-	return (0);
+			res = 1;
+	return (res);
 }
 
 int		precision(const char *str, int i, t_list *stru)
@@ -55,10 +58,23 @@ int		precision(const char *str, int i, t_list *stru)
 
 int		type(const char *str, int i, t_list *stru)
 {
- 	while (!check_convers(str[i]))
+	while (!check_convers(str[i]))
 		i++;
 	stru->type = str[i];
 	return (i);
+}
+
+int		count_convers(const char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+		if (str[i++] == '%')
+			count++;
+	return (count);
 }
 
 t_list	*ft_newlist(int nb)
@@ -86,6 +102,22 @@ t_list	*ft_newlist(int nb)
 	return (res);
 }
 
+//void	print(const char *str)
+
+int	ft_lstsize(t_list *lst)
+{
+	t_list	*tmp;
+	int		count;
+
+	count = 0;
+	tmp = lst;
+	while (tmp)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}
 
 int		ft_printf(const char *str, ...)
 {
@@ -96,20 +128,14 @@ int		ft_printf(const char *str, ...)
 
 	i = 0;
 	len = 0;
-	while (str[i])
-		if (str[i++] == '%')
-			len++;
-	i = 0;
-	list = ft_newlist(len + 1);
-	len = 0;
+	list = ft_newlist(count_convers(str));
 	tmp = list;
 	while (ft_isprint(str[i]))
 	{
+		printf("i1 %d\n", i);
 		if (i)
-		{
-			tmp->next = ft_lstnew();
 			tmp = tmp->next;
-		}
+		printf("i2 %d\n", i);
 		len = len - i;
 		while (ft_isprint(str[i]) && str[i] != '%')
 			ft_putchar(str[i++]);
@@ -125,8 +151,13 @@ int		ft_printf(const char *str, ...)
 				len++;
 			}
 			i = precision(str, i, tmp);
-			i = type(str, i, tmp);
+			i = type(str, i, tmp) + 1;
+		printf("i3 %d\n", i);
 		}
+		printf(" 1 \n");
+		printf("type 1 %c\n", list->type);
+		printf("lstsize %d \n", ft_lstsize(list));
+		printf("type 2 %c\n", list->next->type);
 	}
 
 	return (0);
@@ -135,5 +166,5 @@ int		ft_printf(const char *str, ...)
 #include <stdio.h>
 int main()
 {
-	ft_printf("rgrbrbh%d");
+	ft_printf("rgrbrbh%d\nyhygb %s");
 }

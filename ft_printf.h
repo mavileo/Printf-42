@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/11/30 21:34:01 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/01 16:46:39 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		ft_isprint(int c);
 int		ft_atoi(const char *nb);
 int		ft_isdigit(int c);
 t_list	*ft_lstnew(void);
+char	*ft_strdup(const char *s);
+size_t	ft_strlen(const char *s);
 
 #endif

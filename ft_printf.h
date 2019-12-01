@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/01 16:46:39 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/01 21:59:31 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 
 typedef struct	s_list
 {
-	int				prec;
-	int				len;
-	int				fillzer;
+	int				right;
 	int				left;
+	int				prec_len;
+	int				par_len;
+	int				fillzer;
 	char			*s;
 	void			*p;
 	int				i;
@@ -37,8 +38,14 @@ void	ft_putstr(char *str);
 int		ft_isprint(int c);
 int		ft_atoi(const char *nb);
 int		ft_isdigit(int c);
-t_list	*ft_lstnew(void);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
+t_list	*ft_newlist(int nb);
+int		ft_check_convers(char c);
+int		ft_precision(const char *str, int i, t_list *stru);
+void	ft_print_c(char c, t_list *list, int prec_len, int res_len);
+void	ft_print_s(char *s, t_list *list, int prec_len, int res_len);
+int		ft_type(const char *str, int i, t_list *stru);
+int		ft_count_convers(const char *str);
 
 #endif

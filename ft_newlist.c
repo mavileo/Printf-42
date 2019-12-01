@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:19:30 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/01 20:19:43 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 00:06:11 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_list	*ft_newlist(int nb)
 			return (NULL);
 		elem->right = 0;
 		elem->left = 0;
+		elem->point = 0;
 		elem->par_len = 0;
 		elem->prec_len = 0;
 		elem->fillzer = 0;

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:05:16 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/01 21:25:51 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 00:44:44 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_s(char *s, t_list *list, int prec_len, int res_len)
 	{
 		res_len = res_len + prec_len + ft_strlen(s);
 		ft_putstr(s);
-		while (--prec_len - ft_strlen(s) > 0)
+		while (prec_len-- - ft_strlen(s) > 0)
 			ft_putchar(' ');
 	}
 	else if (list->right)
@@ -34,7 +34,7 @@ void	ft_print_s(char *s, t_list *list, int prec_len, int res_len)
 			res_len = res_len + prec_len;
 		else
 			res_len = res_len + ft_strlen(s);
-		while (i < prec_len)
+		while (i < prec_len && s[i])
 			ft_putchar(s[i++]);
 	}
 	else

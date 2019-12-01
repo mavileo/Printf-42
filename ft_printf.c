@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/01 22:01:16 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 00:51:05 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_print(const char *str, t_list *list, int len, va_list va_lst)
 		ft_print_c(va_arg(va_lst, int), list, prec_param, len);
 	else if (list->type == 's')
 		ft_print_s(va_arg(va_lst, char *), list, prec_param, len);
-	else if (list->type == 's')
-		ft_print_s(va_arg(va_lst, char *), list, prec_param, len);
+	else if (list->type == 'd' || list->type == 'i')
+		ft_print_nb(va_arg(va_lst, int), list, prec_param, len);
 }
 
 int		ft_printf(const char *str, ...)
@@ -58,6 +58,7 @@ int		ft_printf(const char *str, ...)
 				ft_putchar('%');
 				len++;
 			}
+			printf("%d\n", i);
 			i = ft_precision(str, i, tmp);
 			i = ft_type(str, i, tmp) + 1;
 			ft_print(str, tmp, len, va_lst);
@@ -67,9 +68,13 @@ int		ft_printf(const char *str, ...)
 	return (len);
 }
 
-#include <stdio.h>
 int main()
 {
-	ft_printf("%*c", 3, 'a');
+	char s[] = "%*.c|\n";
+	char s2[] = "salut ca va";
+	char c = 'a';
+	int i = 456;
+	ft_printf(s, 50, c);
+	printf(s, 50, c);
 	return (0);
 }

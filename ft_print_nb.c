@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 01:08:04 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 18:50:47 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	ft_print_nb(int nb, t_list *list, int prec_len, int res_len)
 	len_nb = ft_len_nb(nb);
 	if (!prec_len)
 		prec_len = list->prec_len;
+/* 	printf("list->fillzer %d\n", list->fillzer);
+	printf("list->point %d\n", list->point);
+	printf("list->left %d\n", list->left);
+	printf("list->star_point %d\n", list->star_point); */
+	
 	if ((list->fillzer || list->point) && !list->left && !list->star_point)
 		c = '0';
 	else

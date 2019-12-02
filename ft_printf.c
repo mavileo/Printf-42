@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 01:04:31 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 18:51:03 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,39 @@ int main()
 	printf("%0*d\n\n", 10, 50);
 
 	printf("%.*d\n\n", 10, 50);
+
+	ft_printf("%.0-10d\n", 50);
+	printf("%.-10d\n\n", 50);
+
+	ft_printf("%0.-10d\n", 50);
+	printf("%0.-10d\n\n", 50);
+
+	ft_printf("%-.010d\n", 50);
+	printf("%-.010d\n\n", 50);
+
+	ft_printf("%-.010d\n", 50);
+	printf("%-.010d\n\n", 50);
+
+	ft_printf("%0-.10d\n", 50);
+	printf("%0-.10d\n\n", 50);
+
+	ft_printf("%0-*d\n", 10, 50);
+	printf("%0-*d\n\n", 10, 50);
+
+	ft_printf("%0*-d\n", 10, 50);
+	printf("%0*-d\n\n", 10, 50);
+
+	ft_printf("%*.0d\n", 10, 50);
+	printf("%*.0d\n\n", 10, 50);
+
+	ft_printf("%.0*d\n", 10, 50);
+	printf("%.0*d\n\n", 10, 50);
+
+	ft_printf("%*.-d\n", 10, 50);
+	printf("%*.-d\n\n", 10, 50);
+
+	ft_printf("%0*.d\n", 10, 50);
+	printf("%0*.d\n\n", 10, 50);
+
 	return (0);
 }

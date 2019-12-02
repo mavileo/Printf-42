@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:18:31 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 01:09:47 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 18:46:27 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	ft_point(t_list *stru)
 	stru->point = 1;
 	stru->left = 0;
 	if (stru->par_len)
+		stru->star_point = 1;
+}
+
+void	ft_star(t_list *stru)
+{
+	stru->right = 1;
+	stru->par_len = 1;
+	if (stru->point && stru->fillzer)
 		stru->star_point = 1;
 }
 
@@ -35,10 +43,7 @@ int		ft_precision(const char *str, int i, t_list *stru)
 		if (str[i] == '.')
 			ft_point(stru);
 		if (str[i] == '*')
-			stru->right = 1;
-		if (str[i] == '*')
-			stru->par_len = 1;
-		}
+			ft_star(stru);
 		i++;
 	}
 	while (ft_isdigit(str[i]) || str[i] == ' ')

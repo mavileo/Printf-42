@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 00:06:01 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 01:07:18 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_list
 	int				right;
 	int				left;
 	int				point;
+	int				star_point;
 	int				prec_len;
 	int				par_len;
 	int				fillzer;

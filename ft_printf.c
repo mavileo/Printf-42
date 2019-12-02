@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 18:51:03 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/02 22:36:56 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,82 +70,45 @@ int		ft_printf(const char *str, ...)
 int main()
 {
 	char s[] = "%*.c|\n";
-	char s2[] = "salut ca va";
+	char s2[] = "salut ca va bien";
 	char c = 'a';
 	int i = 456;
-	ft_printf(s, 50, c);
-	printf(s, 50, c);
 
-	ft_printf("%-.10d\n", 50);
-	printf("%-.10d\n", 50);
+	ft_printf("%.10s|\n", s2);
+	printf("%.10s|\n\n", s2);
 
-	ft_printf("%.-10d\n", 50);
-	printf("%.-10d\n\n", 50);
+ 	ft_printf("%-10s|\n", s2);
+	printf("%-10s|\n\n", s2);
 
-	ft_printf("%0.10d\n", 50);
-	printf("%0.10d\n\n", 50);
+	ft_printf("%-.10s|\n", s2);
+	printf("%-.10s|\n\n", s2);
 
-	ft_printf("%.010d\n", 50);
-	printf("%.010d\n\n", 50);
+	ft_printf("%.010s|\n", s2);
+	printf("%.010s|\n\n", s2);
 
-	ft_printf("%-010d\n", 50);
-	printf("%-010d\n\n", 50);
+	ft_printf("%.40s|\n", s2);
+	printf("%.40s|\n\n", s2);
 
-	ft_printf("%0-10d\n", 50);
-	printf("%0-10d\n\n", 50);
+	ft_printf("%-40s|\n", s2);
+	printf("%-40s|\n\n", s2);
 
-	ft_printf("%-*d\n", 10, 50);
-	printf("%-*d\n\n", 10, 50);
+	ft_printf("%-.40s|\n", s2);
+	printf("%-.40s|\n\n", s2);
 
-	ft_printf("%*-d\n", 10, 50);
-	printf("%*-d\n\n", 10, 50);
+	ft_printf("%.040s|\n", s2);
+	printf("%.040s|\n\n", s2);
 
-	ft_printf("%*0d\n", 10, 50);
-	printf("%*0d\n\n", 10, 50);
+	ft_printf("%.*s|\n", 10, s2);
+	printf("%.*s|\n\n", 10, s2);
 
-	ft_printf("%.*d\n", 10, 50);
-	printf("%.*d\n\n", 10, 50);
+	ft_printf("%-*s|\n", 10, s2);
+	printf("%-*s|\n\n", 10, s2);
 
-	ft_printf("%*.d\n", 10, 50);
-	printf("%*.d\n\n", 10, 50);
+	ft_printf("%*.s|\n", 10, s2);
+	printf("%*.s|\n\n", 10, s2);
 
-	ft_printf("%0*d\n", 10, 50);
-	printf("%0*d\n\n", 10, 50);
-
-	printf("%.*d\n\n", 10, 50);
-
-	ft_printf("%.0-10d\n", 50);
-	printf("%.-10d\n\n", 50);
-
-	ft_printf("%0.-10d\n", 50);
-	printf("%0.-10d\n\n", 50);
-
-	ft_printf("%-.010d\n", 50);
-	printf("%-.010d\n\n", 50);
-
-	ft_printf("%-.010d\n", 50);
-	printf("%-.010d\n\n", 50);
-
-	ft_printf("%0-.10d\n", 50);
-	printf("%0-.10d\n\n", 50);
-
-	ft_printf("%0-*d\n", 10, 50);
-	printf("%0-*d\n\n", 10, 50);
-
-	ft_printf("%0*-d\n", 10, 50);
-	printf("%0*-d\n\n", 10, 50);
-
-	ft_printf("%*.0d\n", 10, 50);
-	printf("%*.0d\n\n", 10, 50);
-
-	ft_printf("%.0*d\n", 10, 50);
-	printf("%.0*d\n\n", 10, 50);
-
-	ft_printf("%*.-d\n", 10, 50);
-	printf("%*.-d\n\n", 10, 50);
-
-	ft_printf("%0*.d\n", 10, 50);
-	printf("%0*.d\n\n", 10, 50);
+	ft_printf("%.*s|\n", 10, s2);
+	printf("%.*s|\n\n", 10, s2);
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 22:36:56 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/03 19:25:16 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ int main()
 	char s2[] = "salut ca va bien";
 	char c = 'a';
 	int i = 456;
+	int i2 = 456;
 
 	ft_printf("%.10s|\n", s2);
 	printf("%.10s|\n\n", s2);
 
- 	ft_printf("%-10s|\n", s2);
+	ft_printf("%-10s|\n", s2);
 	printf("%-10s|\n\n", s2);
 
 	ft_printf("%-.10s|\n", s2);
@@ -106,6 +107,31 @@ int main()
 
 	ft_printf("%*.s|\n", 10, s2);
 	printf("%*.s|\n\n", 10, s2);
+
+	ft_printf("%.*s|\n", 10, s2);
+	printf("%.*s|\n\n", 10, s2);
+
+
+	ft_printf("%.50s|\n", s2);
+	printf("%.50s|\n\n", s2);
+
+ 	ft_printf("%-50s|\n", s2);
+	printf("%-50s|\n\n", s2);
+
+	ft_printf("%-.50s|\n", s2);
+	printf("%-.50s|\n\n", s2);
+
+	ft_printf("%.050s|\n", s2);
+	printf("%.050s|\n\n", s2);
+
+	ft_printf("%.*s|\n", 50, s2);
+	printf("%.*s|\n\n", 50, s2);
+
+	ft_printf("%-*s|\n", 50, s2);
+	printf("%-*s|\n\n", 50, s2);
+
+	ft_printf("%*.s|\n", 50, s2);
+	printf("%*.s|\n\n", 50, s2);
 
 	ft_printf("%.*s|\n", 10, s2);
 	printf("%.*s|\n\n", 10, s2);

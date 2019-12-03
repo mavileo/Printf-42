@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 22:02:36 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/03 19:39:14 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-void	ft_putchar(char c);
+void	ft_putchar(char c)
 void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
 int		ft_isprint(int c);

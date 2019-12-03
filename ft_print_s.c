@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:05:16 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 22:39:40 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/03 18:26:19 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,36 @@ void	ft_right_s(t_list *list, int res_len, int prec_len, char *s)
 			ft_putchar(s[i++]);
 }
 
+int		ft_only_point(t_list *list, int prec_len, char *s)
+{
+	if (!list->left && !list->par_len && list->point)
+		if (prec_len >= ft_strlen(s))
+			return (1);
+	if (prec_len >= ft_strlen(s) && list->point_star)
+		return (1);
+	return (0);
+}
+
 void	ft_print_s(char *s, t_list *list, int prec_len, int res_len)
 {
+	char	c;
 
+	if (list->fillzer)
+		c = '0';
+	else
+		c = ' ';
 	if (!prec_len)
 		prec_len = list->prec_len;
 	if (!list->left && !list->right)
 		res_len = res_len + ft_strlen(s);
-/* 	printf("list->fillzer %d\n", list->fillzer);
-	printf("list->point %d\n", list->point);
-	printf("list->left %d\n", list->left);
-	printf("prec_len %d\n", prec_len); */
 	if (list->left)
 		ft_left_s(list, res_len, prec_len, s);
-	else if (list->right || list->fillzer)
+	else if ((list->right || list->fillzer) &&
+	!ft_only_point(list, prec_len, s) && !list->star_point)
 		ft_right_s(list, res_len, prec_len, s);
+	else if (list->star_point)
+		while (prec_len-- > 0)
+			ft_putchar(c);
 	else
 		ft_putstr(s);
 }

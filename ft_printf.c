@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 23:46:01 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 00:13:47 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_print(const char *str, t_list *list, va_list va_lst)
 		ft_print_s(va_arg(va_lst, char *), list, prec_param);
 	else if (list->type == 'd' || list->type == 'i')
 		ft_print_nb(va_arg(va_lst, int), list, prec_param);
+	else if (list->type == 'p')
+		ft_print_p(va_arg(va_lst, void *), list, prec_param);
 }
 
 int		ft_printf(const char *str, ...)
@@ -66,10 +68,12 @@ int		ft_printf(const char *str, ...)
 
 int main()
 {
-	char s[] = "%*.s|\n";
+	char s[] = "%p\n";
 	char s2[] = "salut ca va";
-	int i = 456;
-	ft_printf(s, 50, s2);
-	printf(s, 50, s2);
+	int n = 5;
+	int *i = &n;
+	
+	ft_printf(s, i);
+	printf(s, i);
 	return (0);
 }

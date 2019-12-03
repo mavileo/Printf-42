@@ -6,17 +6,19 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 21:56:44 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 00:09:26 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <inttypes.h>
 
 typedef struct	s_list
 {
@@ -35,21 +37,22 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-int		ft_putchar(char c, int end);
-void	ft_putnbr(int nb);
-void	ft_putstr(char *str);
-int		ft_isprint(int c);
-int		ft_atoi(const char *nb);
-int		ft_isdigit(int c);
-char	*ft_strdup(const char *s);
-int		ft_strlen(const char *s);
-t_list	*ft_newlist(int nb);
-int		ft_check_convers(char c);
-int		ft_precision(const char *str, int i, t_list *stru);
-void	ft_print_c(char c, t_list *list, int prec_len);
-void	ft_print_s(char *s, t_list *list, int prec_len);
-int		ft_type(const char *str, int i, t_list *stru);
-int		ft_count_convers(const char *str);
-void	ft_print_nb(int nb, t_list *list, int prec_len);
+int				ft_putchar(char c, int end);
+void			ft_putnbr(int nb);
+void			ft_putstr(char *str);
+int				ft_isprint(int c);
+int				ft_atoi(const char *nb);
+int				ft_isdigit(int c);
+char			*ft_strdup(const char *s);
+int				ft_strlen(const char *s);
+t_list			*ft_newlist(int nb);
+int				ft_check_convers(char c);
+int				ft_precision(const char *str, int i, t_list *stru);
+void			ft_print_c(char c, t_list *list, int prec_len);
+void			ft_print_s(char *s, t_list *list, int prec_len);
+int				ft_type(const char *str, int i, t_list *stru);
+int				ft_count_convers(const char *str);
+void			ft_print_nb(int nb, t_list *list, int prec_len);
+void			ft_print_p(int nb, t_list *list, int prec_len);
 
 #endif

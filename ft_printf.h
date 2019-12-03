@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 19:39:14 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/03 21:56:44 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-void	ft_putchar(char c)
+int		ft_putchar(char c, int end);
 void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
 int		ft_isprint(int c);
@@ -46,10 +46,10 @@ int		ft_strlen(const char *s);
 t_list	*ft_newlist(int nb);
 int		ft_check_convers(char c);
 int		ft_precision(const char *str, int i, t_list *stru);
-void	ft_print_c(char c, t_list *list, int prec_len, int res_len);
-void	ft_print_s(char *s, t_list *list, int prec_len, int res_len);
+void	ft_print_c(char c, t_list *list, int prec_len);
+void	ft_print_s(char *s, t_list *list, int prec_len);
 int		ft_type(const char *str, int i, t_list *stru);
 int		ft_count_convers(const char *str);
-void	ft_print_nb(int nb, t_list *list, int prec_len, int res_len);
+void	ft_print_nb(int nb, t_list *list, int prec_len);
 
 #endif

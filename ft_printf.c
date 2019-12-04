@@ -13,8 +13,8 @@ void	ft_print(t_list *list, va_list va_lst)
 		ft_print_s(va_arg(va_lst, char *), list, prec_param);
 	else if (list->type == 'd' || list->type == 'i' || list->type == 'u')
 		ft_print_nb(va_arg(va_lst, int), list, prec_param);
-	//else if (list->type == 'p')
-	//	ft_print_p(va_arg(va_lst, void *), list, prec_param);
+	else if (list->type == 'p')
+		ft_print_p(va_arg(va_lst, void *), list, prec_param);
 	else if (list->type == 'x' || list->type == 'X')
 		ft_print_x(va_arg(va_lst, unsigned int), list, prec_param, list->type);
 	else if (list->type == 'u')
@@ -58,6 +58,21 @@ int		ft_printf(const char *str, ...)
 
 int main()
 {
+	int i = 5;
+	int *p = &i;
+
+	ft_printf("%p\n", p);
+	printf("%p\n", p);
+
+	ft_printf("%2p\n", p);
+	printf("%2p\n", p);
+
+	ft_printf("%-15p\n", p);
+	printf("%-15p\n", p);
+
+
+	ft_printf("%p\n", NULL);
+	printf("%p\n", NULL);
 
 
 	return (0);

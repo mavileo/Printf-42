@@ -6,29 +6,13 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 15:34:53 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 21:19:49 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* 
 #include "ft_printf.h"
 
-int		ft_len_p(int nb)
-{
-	int len;
-
-	len = 0;
-	if (nb < 0)
-		len++;
-	while (nb)
-	{
-		nb /= 10;
-		len++;
-	}
-	return (len);
-}
-
-void	ft_left_p(int nb, t_list *list, int prec_len)
+void	ft_left_p(char *nb, t_list *list, int prec_len)
 {
 	int		len_nb;
 	char	c;
@@ -37,13 +21,14 @@ void	ft_left_p(int nb, t_list *list, int prec_len)
 		c = '0';
 	else
 		c = ' ';
-	len_nb = ft_len_p(nb);
-	ft_putnbr(nb);
+	len_nb = ft_strlen(nb);
+	ft_putstr("0x");
+	ft_putstr(nb);
 	while (prec_len-- - len_nb > 0)
 		ft_putchar(c, 0);
 }
 
-void	ft_right_p(int nb, t_list *list, int prec_len)
+void	ft_right_p(char *nb, t_list *list, int prec_len)
 {
 	int		len_nb;
 	char	c;
@@ -52,21 +37,22 @@ void	ft_right_p(int nb, t_list *list, int prec_len)
 		c = '0';
 	else
 		c = ' ';
-	len_nb = ft_len_p(nb);
+	len_nb = ft_strlen(nb);
 	while (prec_len-- - len_nb > 0)
 		ft_putchar(c, 0);
-	ft_putnbr(nb);
+	ft_putstr("0x");
+	ft_putstr(nb);
 }
 
-void	ft_print_p(void *addr, t_list *list, int prec_len)
+void	ft_print_p(void	*addr, t_list *list, int prec_len)
 {
-	int		len_nb;
+	int			len_nb;
+	char		*nb;
+	intptr_t	p;
 
-	uintptr_t p;
-
-	p = (uintptr_t)addr;
-	printf("address of a = 0x%"PRIXPTR, uip);
-	len_nb = ft_len_p(nb);
+	p = (intptr_t)addr;
+	nb = ft_itoa_base(p, "0123456789abcdef");
+	len_nb = ft_strlen(nb) + 2;
 	if (!prec_len)
 		prec_len = list->prec_len;
 	if (list->left)
@@ -74,5 +60,9 @@ void	ft_print_p(void *addr, t_list *list, int prec_len)
 	else if (list->right)
 		ft_right_p(nb, list, prec_len);
 	else
-		ft_putnbr(nb);
-} */
+	{
+		ft_putstr("0x");
+		ft_putstr(nb);
+	}
+}
+

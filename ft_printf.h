@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 16:53:27 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 18:20:54 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ void			ft_print_nb(int nb, t_list *list, int prec_len);
 //void			ft_print_p(void *addr, t_list *list, int prec_len);
 char			*ft_itoa_base(long nb, char *base);
 void			ft_print_x(unsigned int n, t_list *list, int prec_len, char type);
+void			ft_putunsign(unsigned int nb);
+void			ft_print_u(unsigned int nb, t_list *list, int prec_len);
 
 #endif

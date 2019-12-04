@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 00:09:26 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 16:53:27 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_list
 }				t_list;
 
 int				ft_putchar(char c, int end);
-void			ft_putnbr(int nb);
+void			ft_putnbr(long nb);
 void			ft_putstr(char *str);
 int				ft_isprint(int c);
 int				ft_atoi(const char *nb);
@@ -53,6 +53,8 @@ void			ft_print_s(char *s, t_list *list, int prec_len);
 int				ft_type(const char *str, int i, t_list *stru);
 int				ft_count_convers(const char *str);
 void			ft_print_nb(int nb, t_list *list, int prec_len);
-void			ft_print_p(int nb, t_list *list, int prec_len);
+//void			ft_print_p(void *addr, t_list *list, int prec_len);
+char			*ft_itoa_base(long nb, char *base);
+void			ft_print_x(unsigned int n, t_list *list, int prec_len, char type);
 
 #endif

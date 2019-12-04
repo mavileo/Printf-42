@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:53:49 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 21:59:51 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/04 15:41:11 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	print_int_min(void)
 	ft_putnbr(147483648);
 }
 
-void	ft_putnbr(int nb)
+void	ft_putnbr(long nb)
 {
-	if (nb == -2147483648)
+	if (nb == -9999999999)
 		print_int_min();
 	else
 	{

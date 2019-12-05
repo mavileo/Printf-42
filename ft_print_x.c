@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:42:47 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 16:53:55 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:42:46 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,5 @@ void	ft_print_x(unsigned int n, t_list *list, int prec_len, char type)
 		ft_right_x(nb, list, prec_len);
 	else
 		ft_putstr(nb);
+	free(nb);
 }

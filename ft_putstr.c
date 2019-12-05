@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 19:55:54 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 01:29:31 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:24:45 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 void	ft_putstr(char *str)
 {
-	write(1, str, ft_strlen(str));
+	int count;
+
+	count = 0;
+	if (str)
+	{
+		while (str[count])
+			ft_putchar(str[count++], 0);
+	}
 }

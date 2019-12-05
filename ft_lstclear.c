@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsign.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/28 21:53:49 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 02:55:33 by mavileo          ###   ########.fr       */
+/*   Created: 2019/12/05 02:57:45 by mavileo           #+#    #+#             */
+/*   Updated: 2019/12/05 02:58:15 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunsign(size_t nb)
+void	ft_lstclear(t_list **lst)
 {
-	if (nb < 10 && nb > -1)
-		ft_putchar(nb + 48, 0);
-	else
+	t_list *tmp;
+	t_list *next;
+
+	tmp = *lst;
+	while (tmp)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
+	*lst = NULL;
 }

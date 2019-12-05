@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:08:09 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 21:19:56 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:37:36 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,15 @@ int		ft_len(long nb, int len_base)
 	return (count);
 }
 
-char	*ft_divmod(long nb, char *base, int len_base, int neg)
+char	*ft_divmod(long nb, char *base, int len_base)
 {
 	char	*res;
 	int		len;
 	int		mod;
 
-	len = ft_len(nb, len_base) + neg;
+	len = ft_len(nb, len_base);
 	if (!(res = malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	if (neg)
-		res[0] = '-';
 	res[len] = 0;
 	len--;
 	mod = 0;
@@ -52,18 +50,13 @@ char	*ft_divmod(long nb, char *base, int len_base, int neg)
 char	*ft_itoa_base(long nb, char *base)
 {
 	int		len_base;
-	int		neg;
 
-	neg = 0;
 	len_base = ft_strlen(base);
 	if (base == NULL)
 		return (NULL);
 	if (nb == 0)
 		return (ft_strdup("0"));
 	if (nb < 0)
-	{
-		neg = 1;
 		ft_itoa_base(-nb, base);
-	}
-	return (ft_divmod(nb, base, len_base, neg));
+	return (ft_divmod(nb, base, len_base));
 }

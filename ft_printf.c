@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 01:40:10 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:58:54 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int		ft_printf(const char *str, ...)
 	tmp = list;
 	ft_loop(str, tmp, va_lst);
 	va_end(va_lst);
+	ft_lstclear(&list);
 	return (ft_putchar(0, 1));
 }

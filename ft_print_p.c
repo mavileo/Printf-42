@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 01:29:17 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:42:06 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ void	ft_print_p(void *addr, t_list *list, int prec_len)
 	intptr_t	p;
 
 	p = (intptr_t)addr;
-	nb = ft_itoa_base(p, "0123456789abcdef");
+	if (p == -1)
+		nb = ft_strdup("ffffffffffffffff");
+	else
+		nb = ft_itoa_base(p, "0123456789abcdef");
 	len_nb = ft_strlen(nb) + 2;
 	if (!prec_len)
 		prec_len = list->prec_len;
@@ -64,4 +67,5 @@ void	ft_print_p(void *addr, t_list *list, int prec_len)
 		ft_putstr("0x");
 		ft_putstr(nb);
 	}
+	free(nb);
 }

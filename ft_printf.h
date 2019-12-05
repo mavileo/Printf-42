@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 05:42:35 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 01:39:20 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:58:28 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+int				ft_printf(const char *str, ...);
 int				ft_putchar(char c, int end);
 void			ft_putnbr(long nb);
 void			ft_putstr(char *str);
-int				ft_isprint(int c);
 int				ft_atoi(const char *nb);
 int				ft_isdigit(int c);
 char			*ft_strdup(const char *s);
@@ -57,9 +57,10 @@ void			ft_print_p(void	*addr, t_list *list, int prec_len);
 char			*ft_itoa_base(long nb, char *base);
 void			ft_print_x(unsigned int n, t_list *list, int prec_len,
 char type);
-void			ft_putunsign(unsigned int nb);
-void			ft_print_u(unsigned int nb, t_list *list, int prec_len);
+void			ft_putunsign(size_t nb);
+void			ft_print_u(size_t nb, t_list *list, int prec_len);
 void			ft_loop(const char *str, t_list *tmp, va_list va_lst);
 void			ft_which_type(t_list *list, va_list va_lst);
+void			ft_lstclear(t_list **lst);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 18:20:23 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 02:51:18 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_len_u(unsigned int nb)
+int		ft_len_u(size_t nb)
 {
 	int len;
 
@@ -25,7 +25,7 @@ int		ft_len_u(unsigned int nb)
 	return (len);
 }
 
-void	ft_left_u(unsigned int nb, t_list *list, int prec_len)
+void	ft_left_u(size_t nb, t_list *list, int prec_len)
 {
 	int		len_nb;
 	char	c;
@@ -40,7 +40,7 @@ void	ft_left_u(unsigned int nb, t_list *list, int prec_len)
 		ft_putchar(c, 0);
 }
 
-void	ft_right_u(unsigned int nb, t_list *list, int prec_len)
+void	ft_right_u(size_t nb, t_list *list, int prec_len)
 {
 	int		len_nb;
 	char	c;
@@ -55,10 +55,12 @@ void	ft_right_u(unsigned int nb, t_list *list, int prec_len)
 	ft_putunsign(nb);
 }
 
-void	ft_print_u(unsigned int nb, t_list *list, int prec_len)
+void	ft_print_u(size_t nb, t_list *list, int prec_len)
 {
 	int		len_nb;
 
+	if (nb < 0)
+		nb = 4294967295;
 	len_nb = ft_len_u(nb);
 	if (!prec_len)
 		prec_len = list->prec_len;

@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <limits.h>
 
-
+//TESTER AVEC DES CONVERSIONS NON GEREES %lu %zu...
+//TESTER AVC PLEINS DE CARACTERES ENTRE LE % ET LE TYPE
+//TESTER AVEC DES ARGUMENTS DU MAUVAIS TYPE
+//TESTER PLUSIEURS CONVERSIONS DANS LE MEME PRINTF
+//7 8 11 12 13 strings
 int main()
 {
 	char s2[] = "salut ca va bien";
@@ -182,16 +186,16 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%-.40s|\n", "");
-	i2 = printf("%-.40s|\n\n", "");
+	i = ft_printf("%-.40s|\n", NULL);
+	i2 = printf("%-.40s|\n\n", NULL);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%.040s|\n", "");
-	i2 = printf("%.040s|\n\n", "");
+	i = ft_printf("%.040s|\n", NULL);
+	i2 = printf("%.040s|\n\n", NULL);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
@@ -214,24 +218,24 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%*.s|\n", 10, "");
-	i2 = printf("%*.s|\n\n", 10, "");
+	i = ft_printf("%*.s|\n", 10, NULL);
+	i2 = printf("%*.s|\n\n", 10, NULL);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%.*s|\n", 10, "");
-	i2 = printf("%.*s|\n\n", 10, "");
+	i = ft_printf("%.*s|\n", 10, NULL);
+	i2 = printf("%.*s|\n\n", 10, NULL);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%.50s|\n", "");
-	i2 = printf("%.50s|\n\n", "");
+	i = ft_printf("%.50s|\n", NULL);
+	i2 = printf("%.50s|\n\n", NULL);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
@@ -296,6 +300,21 @@ int main()
 	
 	printf("\n\n----------CHARS----------\n\n");
 
+	i = ft_printf("%*c|\n", 10, 'a');
+	i2 = printf("%*c|\n\n", 10, 'a');
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n");
+
+	i = ft_printf("%*c|\n", -10, 'a');
+	i2 = printf("%*c|\n\n", -10, 'a');
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n");
 
 	i = ft_printf("%*c|\n", 50, (char)0);
 	i2 = printf("%*c|\n\n", 50, (char)0);
@@ -304,7 +323,15 @@ int main()
 		printf("GOOD RETURN\n\n\n");
 	else
 		printf("BAD RETURN\n\n\n");
-	
+
+	i = ft_printf("%*c|\n", -50, (char)0);
+	i2 = printf("%*c|\n\n", -50, (char)0);
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n");
+
 	i = ft_printf("%-2c|\n", (char)0);
 	i2 = printf("%-2c|\n\n", (char)0);
 

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:05:16 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 05:11:53 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 06:57:37 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	ft_right_s(t_list *list, int prec_len, char *s)
 		c = '0';
 	else
 		c = ' ';
+	if (list->star_point && s == NULL)
+	{
+		while (prec_len--)
+			ft_putchar(c, 0);
+		return ;
+	}
 	while (prec_len - ft_strlen(s) > 0)
 	{
 		ft_putchar(c, 0);
@@ -53,6 +59,8 @@ void	ft_right_s(t_list *list, int prec_len, char *s)
 
 int		ft_only_point(t_list *list, int prec_len, char *s)
 {
+	if (s == NULL)
+		return (0);
 	if (!list->left && !list->par_len && list->point)
 		if (prec_len >= ft_strlen(s))
 			return (1);
@@ -67,8 +75,11 @@ void	ft_print_s(char *s, t_list *list, int prec_len)
 
 	if (prec_len < 0)
 		prec_len = -prec_len;
-	if (s == NULL)
+	if (s == NULL && !list->star_point)
+	{
+		ft_putstr("(null)");
 		return ;
+	}
 	if (list->fillzer)
 		c = '0';
 	else

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:42:47 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 02:42:46 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 04:25:12 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ void	ft_print_x(unsigned int n, t_list *list, int prec_len, char type)
 
 	if (type == 'x')
 		nb = ft_itoa_base(n, "0123456789abcdef");
-	else
+	else if (type == 'X')
 		nb = ft_itoa_base(n, "0123456789ABCDEF");
+	else
+		nb = ft_itoa_base(n, "0123456789");
 	len_nb = ft_strlen(nb);
 	if (!prec_len)
 		prec_len = list->prec_len;

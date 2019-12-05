@@ -6,15 +6,15 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:53:49 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 02:55:33 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 04:40:07 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putunsign(size_t nb)
+void	ft_putunsign(unsigned int nb)
 {
-	if (nb < 10 && nb > -1)
+	if (nb < 10 && nb >= 0)
 		ft_putchar(nb + 48, 0);
 	else
 	{

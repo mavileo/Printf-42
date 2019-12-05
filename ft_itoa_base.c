@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:08:09 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 02:37:36 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 04:06:48 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ char	*ft_itoa_base(long nb, char *base)
 	len_base = ft_strlen(base);
 	if (base == NULL)
 		return (NULL);
-	if (nb == 0)
-		return (ft_strdup("0"));
 	if (nb < 0)
 		ft_itoa_base(-nb, base);
 	return (ft_divmod(nb, base, len_base));

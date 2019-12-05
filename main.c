@@ -21,8 +21,8 @@ int main()
 	ft_printf("%-*d\n", 50, INT_MIN);
 	printf("%-*d\n\n", 50, INT_MIN);
 
-	ft_printf("%.*d\n", 50, INT_MIN);
-	printf("%.*d\n\n", 50, INT_MIN);
+	ft_printf("%.*d\n", 50, -50);
+	printf("%.*d\n\n", 50, -50);
 
 	ft_printf("%*.d\n", 50, INT_MIN);
 	printf("%*.d\n\n", 50, INT_MIN);
@@ -110,8 +110,8 @@ int main()
 	ft_printf("%*c|\n", 50, (char)0);
 	printf("%*c|\n\n", 50, (char)0);
 
-	ft_printf("%-10c|\n", (char)0);
-	printf("%-10c|\n\n", (char)0);
+	ft_printf("%-2c|\n", (char)0);
+	printf("%-2c|\n\n", (char)0);
 
 	ft_printf("%*.c|\n", 50, (char)0);
 	printf("%*.c|\n\n", 50, (char)0);
@@ -150,11 +150,25 @@ int main()
 	ft_printf("%0.10u\n", UINT_MAX);
 	printf("%0.10u\n\n", UINT_MAX);
 
-	ft_printf("%.030u\n", UINT_MAX);
-	printf("%.030u\n\n", UINT_MAX);
+	ft_printf("%.05u\n", UINT_MAX);
+	printf("%.05u\n\n", UINT_MAX);
 
 	ft_printf("%-*u\n", 30, 0);
 	printf("%-*u\n\n", 30, 0);
+
+	printf("\n\n----------ADRESS----------\n\n");
+
+	ft_printf("%p\n", s2);
+	printf("%p\n\n", s2);
+
+	ft_printf("%p\n", NULL);
+	printf("%p\n\n", NULL);
+
+	ft_printf("%-50p\n", s2);
+	printf("%-50p\n\n", s2);
+
+	ft_printf("%*p\n", 50, s2);
+	printf("%*p\n", 50, s2);
 
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 21:59:40 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 04:05:02 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ void	ft_print_nb(int nb, t_list *list, int prec_len)
 	len_nb = ft_len_nb(nb);
 	if (!prec_len)
 		prec_len = list->prec_len;
+	if (list->point_star && nb < 0)
+	{
+		ft_putchar('-', 0);
+		nb = -nb;
+	}
 	if (list->left)
 		ft_left_nb(nb, list, prec_len);
 	else if (list->right)

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 04:37:14 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 05:42:01 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_left_u(unsigned int nb, t_list *list, int prec_len)
 	else
 		c = ' ';
 	len_nb = ft_len_u(nb);
+	if (nb == 0)
+		len_nb++;
 	ft_putunsign(nb);
 	while (prec_len-- - len_nb > 0)
 		ft_putchar(c, 0);
@@ -50,6 +52,8 @@ void	ft_right_u(unsigned int nb, t_list *list, int prec_len)
 	else
 		c = ' ';
 	len_nb = ft_len_u(nb);
+	if (nb == 0)
+		len_nb++;
 	while (prec_len-- - len_nb > 0)
 		ft_putchar(c, 0);
 	ft_putunsign(nb);

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:05:16 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/03 23:11:32 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 05:11:53 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	ft_print_s(char *s, t_list *list, int prec_len)
 {
 	char	c;
 
+	if (prec_len < 0)
+		prec_len = -prec_len;
 	if (s == NULL)
 		return ;
 	if (list->fillzer)

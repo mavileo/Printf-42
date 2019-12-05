@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 21:19:49 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 01:29:17 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_right_p(char *nb, t_list *list, int prec_len)
 	ft_putstr(nb);
 }
 
-void	ft_print_p(void	*addr, t_list *list, int prec_len)
+void	ft_print_p(void *addr, t_list *list, int prec_len)
 {
 	int			len_nb;
 	char		*nb;
@@ -65,4 +65,3 @@ void	ft_print_p(void	*addr, t_list *list, int prec_len)
 		ft_putstr(nb);
 	}
 }
-

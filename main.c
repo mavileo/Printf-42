@@ -296,6 +296,7 @@ int main()
 	
 	printf("\n\n----------CHARS----------\n\n");
 
+
 	i = ft_printf("%*c|\n", 50, (char)0);
 	i2 = printf("%*c|\n\n", 50, (char)0);
 
@@ -312,8 +313,8 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%*.c|\n", 50, (char)0);
-	i2 = printf("%*.c|\n\n", 50, (char)0);
+	i = ft_printf("%*.c|\n", 50, (char)10);
+	i2 = printf("%*.c|\n\n", 50, (char)10);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
@@ -354,8 +355,8 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%-.10X|\n", 42);
-	i2 = printf("%-.10X|\n\n", 42);
+	i = ft_printf("%-.10X|\n", -10);
+	i2 = printf("%-.10X|\n\n", -10);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
@@ -378,14 +379,30 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
-	i = ft_printf("%X|\n", 9999999);
-	i2 = printf("%X|\n\n", 9999999);
+	i = ft_printf("%X|\n", -5);
+	i2 = printf("%X|\n\n", -5);
 
 	if (i == i2 - 1)
 		printf("GOOD RETURN\n\n\n");
 	else
 		printf("BAD RETURN\n\n\n");
+
+	i = ft_printf("%x|\n", 0);
+	i2 = printf("%x|\n\n", 0);
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n\n\n");
 	
+	i = ft_printf("%X|\n", 0);
+	i2 = printf("%X|\n\n", 0);
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n\n\n");
+
 	printf("\n\n----------UNSIGNED INT----------\n\n");
 
 	i = ft_printf("%-.10u|\n", UINT_MAX);
@@ -454,6 +471,23 @@ int main()
 	else
 		printf("BAD RETURN\n\n\n");
 	
+	i = ft_printf("%*p|\n", -50, s2);
+	i2 = printf("%*p|\n\n", -50, s2);
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n");
+	
+	i = ft_printf("%*p|\n", -50, NULL);
+	i2 = printf("%*p|\n\n", -50, NULL);
+
+	if (i == i2 - 1)
+		printf("GOOD RETURN\n\n\n");
+	else
+		printf("BAD RETURN\n\n\n");
+	
+
 
 	return (0);
 }

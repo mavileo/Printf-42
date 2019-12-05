@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:42:47 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 05:58:13 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 06:26:28 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	ft_right_x(char *nb, t_list *list, int prec_len)
 
 	if (!prec_len)
 		prec_len = list->prec_len;
+	if (nb == 0 && !prec_len)
+		ft_putstr(0);
+	if (nb == 0 && !prec_len)
+		return ;
 	if ((list->fillzer || list->point) && !list->left && !list->star_point)
 		c = '0';
 	else
@@ -55,16 +59,16 @@ void	ft_print_x(unsigned int n, t_list *list, int prec_len, char type)
 		list->left = 1;
 	if (prec_len < 0 && !list->point_star)
 		prec_len = -prec_len;
-	if (prec_len < 0 && n == 0)
+	if (prec_len <= 0 && n == 0 && ((!list->fillzer && !list->point) ||
+	list->point_star))
 		ft_putstr("0");
-	if (prec_len < 0 && n == 0)
+	if (prec_len <= 0 && n == 0 && ((!list->fillzer && !list->point) ||
+	list->point_star))
 		return ;
 	if (type == 'x')
 		nb = ft_itoa_base(n, "0123456789abcdef");
-	else if (type == 'X')
-		nb = ft_itoa_base(n, "0123456789ABCDEF");
 	else
-		nb = ft_itoa_base(n, "0123456789");
+		nb = ft_itoa_base(n, "0123456789ABCDEF");
 	len_nb = ft_strlen(nb);
 	if (list->left)
 		ft_left_x(nb, list, prec_len);

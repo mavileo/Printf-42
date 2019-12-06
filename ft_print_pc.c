@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 07:01:09 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 07:11:25 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_width_prec_pc(t_list *list, int use, char space)
 {
 	if (use == 1)
 	{
-		while (list->width > list->prec_len + 1)
+		while (list->width > 1)
 		{
 			ft_putchar(space, 0);
 			list->width--;
@@ -34,26 +34,14 @@ void	ft_width_prec_pc(t_list *list, int use, char space)
 
 void	ft_left_pc(t_list *list, char c, char space)
 {
-	if (list->prec && !list->prec_len && !c && list->width)
-	{
-		while (list->width--)
-			ft_putchar(space, 0);
-		return ;
-	}
 	ft_putchar(c, 0);
-	if (list->width > list->prec_len)
+	if (list->width > 1)
 		ft_width_prec_pc(list, 1, space);
 }
 
 void	ft_right_pc(t_list *list, char c, char space)
 {
-	if (list->prec && !list->prec_len && !c && list->width)
-	{
-		while (list->width--)
-			ft_putchar(space, 0);
-		return ;
-	}
-	if (list->width > list->prec_len)
+	if (list->width > 1)
 		ft_width_prec_pc(list, 1, space);
 	ft_putchar(c, 0);
 }
@@ -71,8 +59,6 @@ void	ft_print_pc(char c, t_list *list)
 		space = '0';
 	else
 		space = ' ';
-	if (list->prec && !list->prec_len && !c && !list->width)
-		return ;
 	if (list->left)
 		ft_left_pc(list, c, space);
 	else

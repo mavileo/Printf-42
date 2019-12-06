@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 04:57:12 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 21:38:54 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,39 +29,44 @@ int		ft_len_nb(long nb)
 	return (len);
 }
 
-void	ft_width_prec_nb(long nb, t_list *list, char c, int use)
+void	ft_width_prec_nb(long nb, t_list *list, int use)
 {
+	char	c;
+	int		len;
+
+	len = ft_len_nb(nb);
+	if (list->prec_len > ft_len_nb(nb) && list->prec)
+		len = list->prec_len;
+	c = ' ';
+	if (list->fillzer && !list->prec)
+		c = '0';
 	if (use == 1)
-	{
-		while (list->width > list->prec_len + ft_len_nb(nb))
-		{
+		while (list->width-- > len)
 			ft_putchar(c, 0);
-			list->width--;
-		}
-	}
 	if (use == 2)
 	{
-		while (list->prec_len - ft_len_nb(nb) > 0)
-		{
+		len = list->prec_len;
+		while (len-- - ft_len_nb(nb) > 0)
 			ft_putchar('0', 0);
-			list->prec_len--;
-		}
 	}
 }
 
 void	ft_left_nb(long nb, t_list *list, char c)
 {
+	list->fillzer = 0;
 	if (list->prec && !list->prec_len && !nb && list->width)
 	{
 		while (list->width--)
 			ft_putchar(c, 0);
 		return ;
 	}
-	if (list->prec)
-		ft_width_prec_nb(nb, list, c, 2);
-	ft_putnbr(nb);
-	if (list->width >= list->prec_len + ft_len_nb(nb))
-		ft_width_prec_nb(nb, list, c, 1);
+	else
+	{
+		if (list->prec)
+			ft_width_prec_nb(nb, list, 2);
+		ft_putnbr(nb);
+		ft_width_prec_nb(nb, list, 1);
+	}
 }
 
 void	ft_right_nb(long nb, t_list *list, char c)
@@ -72,29 +77,31 @@ void	ft_right_nb(long nb, t_list *list, char c)
 			ft_putchar(c, 0);
 		return ;
 	}
-	if (list->width >= list->prec_len + ft_len_nb(nb))
-		ft_width_prec_nb(nb, list, c, 1);
-	if (list->prec)
-		ft_width_prec_nb(nb, list, c, 2);
-	ft_putnbr(nb);
+	else
+	{
+		ft_width_prec_nb(nb, list, 1);
+		if (list->prec)
+			ft_width_prec_nb(nb, list, 2);
+		ft_putnbr(nb);
+	}
 }
 
 void	ft_print_nb(long nb, t_list *list)
 {
 	char c;
 
+	c = ' ';
+	if (list->fillzer && !list->prec)
+		c = '0';
 	if (list->width < 0)
 	{
 		list->left = 1;
 		list->width = -list->width;
 	}
-	if (list->fillzer && !list->prec)
-		c = '0';
-	else
-		c = ' ';
 	if (list->prec && !list->prec_len && !nb && !list->width)
 		return ;
-	if (nb < 0 && (list->fillzer || (list->prec && list->prec_len)))
+	if (nb < 0 && ((list->fillzer && !list->prec) || ((list->prec &&
+	list->prec_len >= ft_len_nb(nb)))))
 	{
 		ft_putchar('-', 0);
 		list->width--;

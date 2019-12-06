@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 06:36:12 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 21:23:44 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,19 @@ int		ft_len_u(unsigned int nb)
 
 void	ft_width_prec_u(unsigned int nb, t_list *list, char c, int use)
 {
+	int		len;
+
+	len = ft_len_u(nb);
+	if (list->prec_len > ft_len_u(nb) && list->prec)
+		len = list->prec_len;
 	if (use == 1)
-	{
-		while (list->width > list->prec_len + ft_len_u(nb))
-		{
+		while (list->width-- > len)
 			ft_putchar(c, 0);
-			list->width--;
-		}
-	}
 	if (use == 2)
 	{
-		while (list->prec_len - ft_len_u(nb) > 0)
-		{
+		len = list->prec_len;
+		while (len-- - ft_len_u(nb) > 0)
 			ft_putchar('0', 0);
-			list->prec_len--;
-		}
 	}
 }
 
@@ -60,8 +58,7 @@ void	ft_left_u(unsigned int nb, t_list *list, char c)
 	if (list->prec)
 		ft_width_prec_u(nb, list, c, 2);
 	ft_putunsign(nb);
-	if (list->width >= list->prec_len + ft_len_u(nb))
-		ft_width_prec_u(nb, list, c, 1);
+	ft_width_prec_u(nb, list, c, 1);
 }
 
 void	ft_right_u(unsigned int nb, t_list *list, char c)
@@ -72,8 +69,7 @@ void	ft_right_u(unsigned int nb, t_list *list, char c)
 			ft_putchar(c, 0);
 		return ;
 	}
-	if (list->width >= list->prec_len + ft_len_u(nb))
-		ft_width_prec_u(nb, list, c, 1);
+	ft_width_prec_u(nb, list, c, 1);
 	if (list->prec)
 		ft_width_prec_u(nb, list, c, 2);
 	ft_putunsign(nb);
@@ -94,7 +90,8 @@ void	ft_print_u(unsigned int nb, t_list *list)
 		c = ' ';
 	if (list->prec && !list->prec_len && !nb && !list->width)
 		return ;
-	if (nb < 0 && (list->fillzer || (list->prec && list->prec_len)))
+	if (nb < 0 && (list->fillzer || ((list->prec && list->prec_len >=
+	ft_len_u(nb)))))
 	{
 		ft_putchar('-', 0);
 		list->width--;

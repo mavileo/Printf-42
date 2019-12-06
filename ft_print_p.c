@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 06:46:30 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 20:25:24 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 void	ft_width_prec_p(char *str, t_list *list, char c, int use)
 {
-	int len;
+	int		len;
 
 	len = ft_strlen(str) + 2;
+	if (list->prec_len > len && list->prec)
+		len = list->prec_len;
 	if (use == 1)
 	{
 		if (list->prec_len < 0)
 			list->prec_len = 0;
-		while (list->width > list->prec_len + len)
+		while (list->width > len)
 		{
 			ft_putchar(c, 0);
 			list->width--;

@@ -5,44 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 18:32:23 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 06:55:29 by mavileo          ###   ########.fr       */
+/*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
+/*   Updated: 2019/12/06 05:24:03 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_left(char c, int prec_len, char space)
+void	ft_width_prec_c(t_list *list, int use, char space)
 {
-	ft_putchar(c, 0);
-	while (--prec_len)
-		ft_putchar(space, 0);
+	if (use == 1)
+	{
+		while (list->width > list->prec_len + 1)
+		{
+			ft_putchar(space, 0);
+			list->width--;
+		}
+	}
+	if (use == 2)
+	{
+		while (list->prec_len - 1 > 0)
+		{
+			ft_putchar('0', 0);
+			list->prec_len--;
+		}
+	}
 }
 
-void	ft_print_c(char c, t_list *list, int prec_len)
+void	ft_left_c(t_list *list, char c, char space)
+{
+	if (list->prec && !list->prec_len && !c && list->width)
+	{
+		while (list->width--)
+			ft_putchar(space, 0);
+		return ;
+	}
+	if (list->prec)
+		ft_width_prec_c(list, 2, space);
+	ft_putchar(c, 0);
+	if (list->width > list->prec_len)
+		ft_width_prec_c(list, 1, space);
+}
+
+void	ft_right_c(t_list *list, char c, char space)
+{
+	if (list->prec && !list->prec_len && !c && list->width)
+	{
+		while (list->width--)
+			ft_putchar(space, 0);
+		return ;
+	}
+	if (list->width > list->prec_len)
+		ft_width_prec_c(list, 1, space);
+	if (list->prec)
+		ft_width_prec_c(list, 2, space);
+	ft_putchar(c, 0);
+}
+
+void	ft_print_c(char c, t_list *list)
 {
 	char space;
 
-	if (prec_len < 0)
+	if (list->width < 0)
 	{
 		list->left = 1;
-		prec_len = -prec_len;
+		list->width = -list->width;
 	}
-	if (list->fillzer && !list->left && !list->star_point)
+	if (list->fillzer && !list->prec)
 		space = '0';
 	else
 		space = ' ';
-	if (!prec_len)
-		prec_len = list->prec_len;
+	if (list->prec && !list->prec_len && !c && !list->width)
+		return ;
 	if (list->left)
-		ft_left(c, prec_len, space);
-	else if ((list->right && !list->point && !(list->fillzer && list->point))
-	|| list->only_zer || list->star_point)
-	{
-		while (--prec_len && !list->point_star)
-			ft_putchar(space, 0);
-		ft_putchar(c, 0);
-	}
+		ft_left_c(list, c, space);
 	else
-		ft_putchar(c, 0);
+		ft_right_c(list, c, space);
 }

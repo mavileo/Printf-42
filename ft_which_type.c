@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 01:36:32 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 04:43:14 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 05:25:30 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_which_type(t_list *list, va_list va_lst)
 		list->prec_len = va_arg(va_lst, int);
 	if (list->type == 'd' || list->type == 'i')
 		ft_print_nb(va_arg(va_lst, int), list);
-/* 	else if (list->type == 'c')
+ 	else if (list->type == 'c')
 		ft_print_c(va_arg(va_lst, int), list);
 	else if (list->type == 's')
 		ft_print_s(va_arg(va_lst, char *), list);
-	else if (list->type == 'p')
+/*	else if (list->type == 'p')
 		ft_print_p(va_arg(va_lst, void *), list);
 	else if (list->type == 'x' || list->type == 'X')
 		ft_print_x(va_arg(va_lst, unsigned int), list, list->type);

@@ -5,95 +5,94 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/01 20:05:16 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 06:57:37 by mavileo          ###   ########.fr       */
+/*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
+/*   Updated: 2019/12/06 05:59:47 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_left_s(t_list *list, int prec_len, char *s)
+void	ft_width_s(char *str, t_list *list, char c)
 {
-	char	c;
+	int len;
 
-	if (list->fillzer)
-		c = '0';
-	else
-		c = ' ';
-	ft_putstr(s);
-	while (prec_len - ft_strlen(s) > 0)
+	len = ft_strlen(str);
+	if (list->prec_len < 0)
+		list->prec_len = 0;
+	while (list->width > list->prec_len + len)
 	{
 		ft_putchar(c, 0);
-		prec_len--;
+		list->width--;
 	}
 }
 
-void	ft_right_s(t_list *list, int prec_len, char *s)
+void	ft_left_s(char *str, t_list *list, char c)
 {
-	char	c;
-	int		i;
+	int i;
 
 	i = 0;
-	if (list->fillzer)
-		c = '0';
-	else
-		c = ' ';
-	if (list->star_point && s == NULL)
+	if (list->prec && !list->prec_len && !str && list->width)
 	{
-		while (prec_len--)
+		while (list->width--)
 			ft_putchar(c, 0);
 		return ;
 	}
-	while (prec_len - ft_strlen(s) > 0)
+	while (str[i] && (list->prec_len-- || !list->prec))
+		ft_putchar(str[i++], 0);
+	if (list->width >= list->prec_len + ft_strlen(str))
+		ft_width_s(str, list, c);
+}
+
+void	ft_right_s(char *str, t_list *list, char c)
+{
+	int i;
+
+	i = 0;
+	if (list->prec && !list->prec_len && !str && list->width)
 	{
-		ft_putchar(c, 0);
-		prec_len--;
+		while (list->width--)
+			ft_putchar(c, 0);
+		return ;
 	}
-	if (!list->only_zer)
-		while (i < prec_len && s[i])
-			ft_putchar(s[i++], 0);
-	else
-		while (s[i])
-			ft_putchar(s[i++], 0);
+	if (list->width >= list->prec_len + ft_strlen(str))
+		ft_width_s(str, list, c);
+	while (str[i] && (list->prec_len-- || !list->prec))
+		ft_putchar(str[i++], 0);
 }
 
-int		ft_only_point(t_list *list, int prec_len, char *s)
+void	ft_null(t_list *list, char c)
 {
-	if (s == NULL)
-		return (0);
-	if (!list->left && !list->par_len && list->point)
-		if (prec_len >= ft_strlen(s))
-			return (1);
-	if (prec_len >= ft_strlen(s) && list->point_star)
-		return (1);
-	return (0);
-}
-
-void	ft_print_s(char *s, t_list *list, int prec_len)
-{
-	char	c;
-
-	if (prec_len < 0)
-		prec_len = -prec_len;
-	if (s == NULL && !list->star_point)
-	{
+	if (!list->width)
 		ft_putstr("(null)");
-		return ;
-	}
-	if (list->fillzer)
+	else
+		while (list->width--)
+			ft_putchar(c, 0);
+}
+
+void	ft_print_s(char *str, t_list *list)
+{
+	char c;
+
+	if (list->prec_len < 0)
+		list->prec_len = ft_strlen(str);
+	if (list->fillzer && !list->prec)
 		c = '0';
 	else
 		c = ' ';
-	if (!prec_len)
-		prec_len = list->prec_len;
+	if (str == NULL)
+	{
+		ft_null(list, c);
+		return ;
+	}
+	if (!*str && !list->width)
+		return ;
+	if (list->width < 0)
+	{
+		list->left = 1;
+		list->width = -list->width;
+	}
 	if (list->left)
-		ft_left_s(list, prec_len, s);
-	else if ((list->right || list->fillzer) &&
-	!ft_only_point(list, prec_len, s) && !list->star_point)
-		ft_right_s(list, prec_len, s);
-	else if (list->star_point)
-		while (prec_len-- > 0)
-			ft_putchar(c, 0);
+		ft_left_s(str, list, c);
 	else
-		ft_putstr(s);
+		ft_right_s(str, list, c);
 }

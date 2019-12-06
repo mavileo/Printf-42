@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 01:36:32 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 05:25:30 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 06:41:54 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ft_which_type(t_list *list, va_list va_lst)
 		ft_print_c(va_arg(va_lst, int), list);
 	else if (list->type == 's')
 		ft_print_s(va_arg(va_lst, char *), list);
-/*	else if (list->type == 'p')
-		ft_print_p(va_arg(va_lst, void *), list);
 	else if (list->type == 'x' || list->type == 'X')
-		ft_print_x(va_arg(va_lst, unsigned int), list, list->type);
+		ft_print_x(va_arg(va_lst, unsigned int), list);
+	else if (list->type == 'p')
+		ft_print_p(va_arg(va_lst, void *), list);
 	else if (list->type == 'u')
 		ft_print_u(va_arg(va_lst, unsigned int), list);
 	else if (list->type == '%')
-		ft_print_pc(list); */
+		ft_print_pc('%', list);
 }

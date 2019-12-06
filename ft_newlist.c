@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:19:30 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/02 19:46:36 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 02:46:35 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,13 @@ t_list	*ft_newlist(int nb)
 	{
 		if (!(elem = malloc(sizeof(t_list))))
 			return (NULL);
-		elem->right = 0;
 		elem->left = 0;
-		elem->point = 0;
-		elem->star_point = 0;
-		elem->point_star = 0;
-		elem->only_zer = 0;
-		elem->par_len = 0;
+		elem->prec = 0;
+		elem->par_prec = 0;
+		elem->par_width = 0;
 		elem->prec_len = 0;
+		elem->width = 0;
 		elem->fillzer = 0;
-		elem->p = NULL;
-		elem->i = 0;
 		elem->type = 0;
 		elem->next = res;
 		res = elem;

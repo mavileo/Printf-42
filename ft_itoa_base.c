@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 16:08:09 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 04:06:48 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 23:43:59 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,24 @@ char	*ft_divmod(long nb, char *base, int len_base)
 	return (res);
 }
 
+char	*ft_nbzer(char *base)
+{
+	char *res;
+
+	if (!(res = malloc(sizeof(char) * 2)))
+		return (NULL);
+	res[0] = base[0];
+	res[1] = 0;
+	return (res);
+}
+
 char	*ft_itoa_base(long nb, char *base)
 {
 	int		len_base;
 
 	len_base = ft_strlen(base);
+	if (nb == 0)
+		return (ft_nbzer(base));
 	if (base == NULL)
 		return (NULL);
 	if (nb < 0)

@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 01:37:12 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 01:39:08 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 02:29:58 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,9 @@ void	ft_loop(const char *str, t_list *tmp, va_list va_lst)
 		if (str[i] == '%')
 		{
 			i++;
-			if (str[i] == '%')
-				ft_putchar('%', 0);
-			else
-			{
-				i = ft_precision(str, i, tmp);
-				i = ft_type(str, i, tmp);
-				ft_which_type(tmp, va_lst);
-			}
+			i = ft_width_precision(str, i, tmp);
+			i = ft_type(str, i, tmp);
+			ft_which_type(tmp, va_lst);
 			i++;
 		}
 	}

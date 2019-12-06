@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 01:36:48 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/05 05:32:59 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/05 22:34:21 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_putchar(char c, int end)
 		return (ret);
 	}
 	write(1, &c, 1);
-	res++;
+	if (end == 0)
+		res++;
 	return (res);
 }

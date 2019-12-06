@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 21:53:49 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/04 18:08:22 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/06 00:20:15 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr(long nb)
 {
-	if (nb < 10 && nb > -1)
+	if (nb < 10 && nb >= 0)
 		ft_putchar(nb + 48, 0);
 	else if (nb < 0)
 	{

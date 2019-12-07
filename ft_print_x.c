@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/07 04:48:18 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 06:00:43 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_left_x(char *str, t_list *list, char c, int nb)
 	int i;
 
 	list->fillzer = 0;
+	c = ' ';
 	i = 0;
 	if (list->prec && !list->prec_len && !nb && list->width)
 	{

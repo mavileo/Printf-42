@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/07 05:24:56 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 06:11:50 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_print_nb(long nb, t_list *list)
 	if (list->fillzer && !list->left && (!list->prec || list->prec_len < 0))
 		c = '0';
 	if (nb < 0 && ((list->fillzer && !list->prec) || (list->prec &&
-	list->prec_len >= ft_len_nb(nb))))
+	(list->prec_len >= ft_len_nb(nb) || -list->prec_len >= ft_len_nb(nb)))))
 	{
 		ft_putchar('-', 0);
 		list->width--;

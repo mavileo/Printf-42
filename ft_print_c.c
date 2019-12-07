@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 05:24:03 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 01:50:35 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_width_prec_c(t_list *list, int use, char space)
 
 void	ft_left_c(t_list *list, char c, char space)
 {
+	list->fillzer = 0;
 	if (list->prec && !list->prec_len && !c && list->width)
 	{
 		while (list->width--)
@@ -71,7 +72,7 @@ void	ft_print_c(char c, t_list *list)
 		list->left = 1;
 		list->width = -list->width;
 	}
-	if (list->fillzer && !list->prec)
+	if (list->fillzer && !list->prec && !list->left)
 		space = '0';
 	else
 		space = ' ';

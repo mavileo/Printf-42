@@ -6,7 +6,7 @@
 #    By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/05 23:18:07 by mavileo           #+#    #+#              #
-#    Updated: 2019/12/06 06:41:27 by mavileo          ###   ########.fr        #
+#    Updated: 2019/12/07 00:40:34 by mavileo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC=    ft_atoi.c       		\
 		ft_type.c    \
 		ft_which_type.c    \
 		ft_lstclear.c    \
+		ft_substr.c    \
 
 NAME= libftprintf.a
 

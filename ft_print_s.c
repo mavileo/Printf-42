@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 07:38:54 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 04:01:40 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_left_s(char *str, t_list *list, char c)
 
 	len = 0;
 	i = 0;
+	list->fillzer = 0;
 	if (list->prec_len > ft_strlen(str) && list->prec)
 		len = ft_strlen(str);
 	else if (list->prec)
@@ -59,36 +60,45 @@ void	ft_right_s(char *str, t_list *list, char c)
 
 void	ft_null(t_list *list, char c)
 {
-	if (!list->width)
-		ft_putstr("(null)");
+	int		len;
+	char	*nul;
+
+	len = 6;
+	//printf("list->prec_len %d\n", list->prec_len);
+	if (list->prec && (list->prec_len >= 0 && list->prec_len < 6))
+		len = list->prec_len;
+	nul = ft_substr("(null)", 0, len);
+	if (list->prec_len < 0)
+		ft_putstr(nul);
+	else if (list->left)
+		ft_left_s(nul, list, c);
 	else
-		while (list->width-- > 0)
-			ft_putchar(c, 0);
+		ft_right_s(nul, list, c);
+	free(nul);
 }
 
 void	ft_print_s(char *str, t_list *list)
 {
 	char c;
 
-	if (list->prec_len < 0)
-		list->prec_len = ft_strlen(str);
-	c = ' ';
-	if (list->fillzer && !list->prec)
-		c = '0';
-	if (str == NULL)
-		ft_null(list, c);
-	if (str == NULL)
-		return ;
-	if (!*str && !list->width)
-		return ;
-	if (!*str && list->prec)
-		ft_null(list, c);
-	if (!*str && list->prec)
-		return ;
 	if (list->width < 0)
 		list->left = 1;
 	if (list->width < 0)
 		list->width = -list->width;
+	c = ' ';
+	if (list->fillzer && !list->prec && !list->left)
+		c = '0';
+	if (str == NULL)
+		ft_null(list, c);
+	if (str == NULL || (!*str && !list->width))
+		return ;
+	if (list->prec_len < 0)
+		list->prec_len = ft_strlen(str);
+	if (!*str)
+		while (list->width--)
+			ft_putchar(c, 0);
+	if (!*str)
+		return ;
 	if (list->left)
 		ft_left_s(str, list, c);
 	else

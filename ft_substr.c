@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_loop.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/05 01:37:12 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/07 02:45:12 by mavileo          ###   ########.fr       */
+/*   Created: 2019/11/05 19:30:09 by mavileo           #+#    #+#             */
+/*   Updated: 2019/12/07 00:41:07 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_loop(const char *str, t_list *tmp, va_list va_lst)
+char	*ft_substr(char const *s, int start, int len)
 {
-	int	i;
+	char	*res;
+	int		count;
 
-	i = 0;
-	while (str[i])
-	{
-		if (i)
-			tmp = tmp->next;
-		while (str[i] && str[i] != '%')
-			ft_putchar(str[i++], 0);
-		if (str[i] == '%')
-		{
-			i++;
-			i = ft_width_precision(str, i, tmp);
-			i = ft_type(str, i, tmp);
-			ft_which_type(tmp, va_lst);
-			i++;
-		}
-	}
+	if (!s || len < 1 || len > 2147483647)
+		return (ft_strdup(""));
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	count = 0;
+	if (!(res = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (count < len)
+		res[count++] = s[start++];
+	res[count] = 0;
+	return (res);
 }

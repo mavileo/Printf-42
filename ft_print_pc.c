@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 07:11:25 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 01:50:12 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_print_pc(char c, t_list *list)
 		list->left = 1;
 		list->width = -list->width;
 	}
-	if (list->fillzer && !list->prec)
+	if (list->fillzer && !list->prec && !list->left)
 		space = '0';
 	else
 		space = ' ';

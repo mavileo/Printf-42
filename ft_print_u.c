@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 21:23:44 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 03:45:34 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ft_width_prec_u(unsigned int nb, t_list *list, char c, int use)
 
 void	ft_left_u(unsigned int nb, t_list *list, char c)
 {
+	list->fillzer = 0;
 	if (list->prec && !list->prec_len && !nb && list->width)
 	{
 		while (list->width--)
@@ -79,17 +80,16 @@ void	ft_print_u(unsigned int nb, t_list *list)
 {
 	char c;
 
+	if (list->prec && !list->prec_len && !nb && !list->width)
+		return ;
 	if (list->width < 0)
 	{
 		list->left = 1;
 		list->width = -list->width;
 	}
-	if (list->fillzer && !list->prec)
+	c = ' ';
+	if (list->fillzer && !list->left && (!list->prec || list->prec_len < 0))
 		c = '0';
-	else
-		c = ' ';
-	if (list->prec && !list->prec_len && !nb && !list->width)
-		return ;
 	if (nb < 0 && (list->fillzer || ((list->prec && list->prec_len >=
 	ft_len_u(nb)))))
 	{

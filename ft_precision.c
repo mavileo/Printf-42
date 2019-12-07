@@ -6,13 +6,13 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 20:18:31 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 06:56:12 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 04:23:23 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_isdigit_nozer(int c)
+int		ft_isdigit_nozer(int c)
 {
 	if (c > '0' && c <= '9')
 		return (1);

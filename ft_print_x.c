@@ -6,7 +6,7 @@
 /*   By: mavileo <mavileo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 22:15:38 by mavileo           #+#    #+#             */
-/*   Updated: 2019/12/06 21:38:31 by mavileo          ###   ########.fr       */
+/*   Updated: 2019/12/07 03:43:17 by mavileo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,6 @@ void	ft_print_x(unsigned int nb, t_list *list)
 	str = ft_nb_x(nb, list->type);
 	if (list->prec_len < 0)
 		list->prec_len = ft_strlen(str);
-	if (list->fillzer && !list->prec)
-		c = '0';
-	else
-		c = ' ';
 	if (!*str && !list->width)
 		return ;
 	if (list->width < 0)
@@ -103,8 +99,13 @@ void	ft_print_x(unsigned int nb, t_list *list)
 		list->left = 1;
 		list->width = -list->width;
 	}
+	if (list->fillzer && !list->prec && !list->left)
+		c = '0';
+	else
+		c = ' ';
 	if (list->left && list->width)
 		ft_left_x(str, list, c, nb);
 	else
 		ft_right_x(str, list, c, nb);
+	free(str);
 }
